@@ -75,9 +75,6 @@ function ajax(rounter,state){
             for(var i=0; i<result.data.length;i++){
             	var data = result.data[i];
             	var contentMin = data.content.replace(/<[^>]*>/g,"");
-            	var contentMax= data.content.replace(/src=\"\/\//g,"src=\"https:\/\/");
-
-            	// if(state)
             	
             	html+='<li class="article-li">'+
             					'<div class="header">'+
@@ -88,8 +85,7 @@ function ajax(rounter,state){
        
          						 '<div class="title">'+data.title+'</div>'+
           					 '<div class="makedown">'+
-          					  '<span class="showSpan">'+contentMin.substring(0,150)+'</span>'+
-          					  '<div  class="showDiv">'+contentMax+'</div>'+
+          					  '<div class="showDiv">'+contentMin.substring(0,150)+'</div>'+
             						'<a class="showup">显示全部</a>'+
           						'</div>'+
 
@@ -100,30 +96,42 @@ function ajax(rounter,state){
 					             '<span>禁止转载</span>'+
 					            '</div>'+
                     '</li>';
-
             }
 
             $(".article").find("ul").html(html);
 
-            	var article = document.getElementsByClassName("article");
-						  var li = article[0].getElementsByClassName("article-li");
+
+            // 显示全部，
+            var article = document.getElementsByClassName("article");
+						var li = article[0].getElementsByClassName("article-li");
 
 						for(var j=0;j<li.length;j++){
 							(function(j){
+
+								var data = result.data[j];
+            		var contentMin = data.content.replace(/<[^>]*>/g,"");
+            		var contentMax= data.content.replace(/src=\"\/\//g,"src=\"https:\/\/");
+
 								var showup = li[j].getElementsByClassName("showup"); 
 								return showup[0].onclick = function(){
 									// console.log(j);
 									if(showup[0].innerText == "显示全部"){
-										li[j].getElementsByClassName("showSpan")[0].style.display = "none";
-										li[j].getElementsByClassName("showDiv")[0].style.display = "block";	
+										// li[j].getElementsByClassName("showSpan")[0].style.display = "none";
+										li[j].getElementsByClassName("showDiv")[0].innerHTML = contentMin;	
 										showup[0].innerText = "收起";	
 									}else{
-										li[j].getElementsByClassName("showSpan")[0].style.display = "block";
-										li[j].getElementsByClassName("showDiv")[0].style.display = "none";	
+										// li[j].getElementsByClassName("showSpan")[0].style.display = "block";
+										li[j].getElementsByClassName("showDiv")[0].innerHTML = contentMax;	
 										showup[0].innerText = "显示全部";	
 									}	
 								}
 							})(j)
+
+						// 点击更多
+						var more = document,getElementsByClassName("more");
+						more.onclick = function(){
+							addAjax();
+						}
 }
         },
         error:function (result, status) {

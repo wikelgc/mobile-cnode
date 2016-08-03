@@ -191,6 +191,7 @@ nav .news .setting{
 
 .article{
 	width: 100%;
+	position: relative;
 }
 
 .article ul{
@@ -257,7 +258,7 @@ nav .news .setting{
 }
 
 .article .showDiv{
-	display: none;
+	display: block;
 }
 
 .article .showDiv img{
@@ -303,4 +304,20 @@ nav .news .setting{
 .article .footer span{
 	display: inline-block;
 	margin-right: 1rem;
+}
+
+.article .more{
+
+	display: block;
+	background-color: #e6e6e8;
+	border:1px solid #cccccc;
+	/*border:1px solid #eee;*/
+	width: calc(100% - 2rem);
+	margin: 2rem auto;
+	/*border:none;*/
+	height: 2.4rem;
+	font-size: 1.4rem;
+	line-height: 2.4rem;
+	border-radius: .3rem;
+	text-align: center;
 }
