@@ -57,7 +57,7 @@ $(function(){
             					'<div class="header">'+
             						'<span class="name">'+data.author.loginname+'</span>'+
             						'<time>'+'10分钟前'+'</time>'+
-            						'<img src="">'+ 
+            						'<img src="'+data.author.avatar_url+'">'+ 
           						'</div>'+
        
          						 '<div class="title">'+data.title+'</div>'+
