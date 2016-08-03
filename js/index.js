@@ -31,15 +31,17 @@ for(var i=0;i<nav.length;i++){
 					rounter = "";
 				}
 				ajax(rounter);
-
 		}
-	})(i)
-	
+	})(i);
 }
+
+
 
 
 $(function(){
 	ajax("job");
+
+
 })
 
 
@@ -51,23 +53,14 @@ $(function(){
 })
 
 
-// window.onload = function(){
 
-// var url = "https://cnodejs..org/api/v1/topics";
-
-// 	get(url,function(text){
-// 		console.log(text);
-// 	})
-// .// }/
-
-
-function ajax(rounter){
+function ajax(rounter,state){
 	$.ajax({
         type:"GET",   
         data:{
         	page:10,
         	tab:rounter,
-        	limit:10
+        	limit:20
         },
         url: "https://cnodejs.org/api/v1/topics",
         dataType:"json",
@@ -82,9 +75,12 @@ function ajax(rounter){
 
             for(var i=0; i<result.data.length;i++){
             	var data = result.data[i];
-            	var content = data.content.replace(/<[^>]*>/g,"");
+            	var contentMin = data.content.replace(/<[^>]*>/g,"");
+            	var contentMax= data.content.replace(/src=\"\/\//g,"src=\"https:\/\/");
+
+            	// if(state)
             	
-            	html+='<li>'+
+            	html+='<li class="article-li">'+
             					'<div class="header">'+
             						'<span class="name">'+data.author.loginname+'</span>'+
             						'<time>'+'10分钟前'+'</time>'+
@@ -92,7 +88,9 @@ function ajax(rounter){
           						'</div>'+
        
          						 '<div class="title">'+data.title+'</div>'+
-          					 '<div class="makedown">'+content.substring(0,150)+
+          					 '<div class="makedown">'+
+          					  '<span class="showSpan">'+contentMin.substring(0,150)+'</span>'+
+          					  '<div  class="showDiv">'+contentMax+'</div>'+
             						'<a class="showup">显示全部</a>'+
           						'</div>'+
 
@@ -103,9 +101,31 @@ function ajax(rounter){
 					             '<span>禁止转载</span>'+
 					            '</div>'+
                     '</li>';
+
             }
 
             $(".article").find("ul").html(html);
+
+            	var article = document.getElementsByClassName("article");
+						  var li = article[0].getElementsByClassName("article-li");
+
+						for(var j=0;j<li.length;j++){
+							(function(j){
+								var showup = li[j].getElementsByClassName("showup"); 
+								return showup[0].onclick = function(){
+									// console.log(j);
+									if(showup[0].innerText == "显示全部"){
+										li[j].getElementsByClassName("showSpan")[0].style.display = "none";
+										li[j].getElementsByClassName("showDiv")[0].style.display = "block";	
+										showup[0].innerText = "收起";	
+									}else{
+										li[j].getElementsByClassName("showSpan")[0].style.display = "block";
+										li[j].getElementsByClassName("showDiv")[0].style.display = "none";	
+										showup[0].innerText = "显示全部";	
+									}	
+								}
+							})(j)
+}
         },
         error:function (result, status) {
         //处理错误

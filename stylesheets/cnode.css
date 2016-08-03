@@ -252,6 +252,22 @@ nav .news .setting{
 	overflow: hidden;
 }
 
+.article .showSpan{
+	display: inline;
+}
+
+.article .showDiv{
+	display: none;
+}
+
+.article .showDiv img{
+	max-width: 100%;
+	overflow: hidden;
+	height: auto;
+		width:100%;
+
+}
+
 .article .showup{
 	font-size: 1.4rem;
 	/*line-height: */
