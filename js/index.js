@@ -128,7 +128,7 @@ function ajax(rounter,state){
 							})(j)
 
 						// 点击更多
-						var more = document,getElementsByClassName("more");
+						var more = document.getElementsByClassName("more")[0];
 						more.onclick = function(){
 							addAjax();
 						}
