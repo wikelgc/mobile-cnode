@@ -215,7 +215,11 @@ nav .news .setting{
 
 .article .makedown{
 	font-size: 1.4rem;
+	line-height: 2rem;
 	color: black;
+
+	height: 5rem;
+	overflow: hidden;
 }
 
 .article h2{

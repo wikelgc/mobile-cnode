@@ -1,0 +1,2 @@
+// possMessage.js
+func
