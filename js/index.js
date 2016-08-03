@@ -58,7 +58,6 @@ function ajax(rounter,state){
 	$.ajax({
         type:"GET",   
         data:{
-        	page:10,
         	tab:rounter,
         	limit:20
         },
