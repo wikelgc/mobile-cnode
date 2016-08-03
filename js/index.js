@@ -1,21 +1,72 @@
 // 首页
-
+var nav = document.getElementsByTagName('nav')[0].getElementsByTagName("li");
+var index = nav[0];
 // 精华
-
+var good = nav[1];
 // 分享
-
-
+var share = nav[2];
 // 问答
-
+var ask = nav[3];
 // 招聘
+var job = nav[4];
+var rounter = "";
+
+for(var i=0;i<nav.length;i++){
+	(function(i){
+		// console.log(1);
+		return nav[i].onclick = function(){
+				var rounter = ""; 
+				console.log(i);
+				if(i == 0){
+					rounter = ""
+				}else if(i == 1){
+					rounter = "good";
+				}else if(i == 2){
+					rounter = "share";
+				}else if(i == 3){
+					rounter = "ask";
+				}else if(i == 4){
+					rounter = "job";
+				}else{
+					rounter = "";
+				}
+				ajax(rounter);
+
+		}
+	})(i)
+	
+}
 
 
 $(function(){
+	ajax("job");
+})
+
+
+$(function(){
+	var zip = new RegExp("")
+	var text = '<span>我的世界</span>'
+	var result = text.replace(/<[^>]*>/g," ");
+	console.log(result);
+})
+
+
+// window.onload = function(){
+
+// var url = "https://cnodejs..org/api/v1/topics";
+
+// 	get(url,function(text){
+// 		console.log(text);
+// 	})
+// .// }/
+
+
+function ajax(rounter){
 	$.ajax({
         type:"GET",   
         data:{
         	page:10,
-        	tab:"ask",
+        	tab:rounter,
         	limit:10
         },
         url: "https://cnodejs.org/api/v1/topics",
@@ -28,26 +79,6 @@ $(function(){
 
             data = result.data[0];	
             var html = "";
-
-                //  	html='<li>'+
-            				// 	'<div class="header">'+
-            				// 		'<span class="name">'+data.author.loginname+'</span>'+
-            				// 		'<time>'+'10分钟前'+'</time>'+
-            				// 		'<img src="">'+ 
-          						// '</div>'+
-       
-         						 // '<div class="title">'+data.title+'</div>'+
-          					 // '<div class="makedown">'+data.content+
-            				// 		'<a class="#">显示全部</a>'+
-          						// '</div>'+
-
-					           // '<div class="footer">'+
-					           //   '<span>关注问题</span>'+
-					           //   '<span>评论</span>'+
-					           //   '<span>感谢</span>'+
-					           //   '<span>禁止装载</span>'+
-					           //  '</div>'+
-                //     '</li>';
 
             for(var i=0; i<result.data.length;i++){
             	var data = result.data[i];
@@ -81,22 +112,4 @@ $(function(){
             console.log(result);
         }
 });
-})
-
-
-$(function(){
-	var zip = new RegExp("")
-	var text = '<span>我的世界</span>'
-	var result = text.replace(/<[^>]*>/g," ");
-	console.log(result);
-})
-
-
-// window.onload = function(){
-
-// var url = "https://cnodejs..org/api/v1/topics";
-
-// 	get(url,function(text){
-// 		console.log(text);
-// 	})
-// .// }/
+}
