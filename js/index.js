@@ -1,36 +1,15 @@
-// index.js
+// 首页
 
-// function get(url,callback){
-// 	// 创建新请求
-// 	var request = new XMLHttpRequest();
-// 	// 指定带获取的URL
-// 	console.log(url);
-// 	request.open("GET",url);
-// 	// 事件监听器
-// 	request.onreadstatechange = function(){
-// 		// 如果请求完成并成功
-// 		if(request.status === 104){
-// 			console.log(104);
-// 		}
+// 精华
 
-// 		if(request.readyState === 4 && request.status === 200){
-// 			// 获得响应的类型
-// 			var type = request.getResponseHeader("content-Type");
-// 			// 检查类型
-// 			if(type.indexOf(xml) !== -1 && request.responseXML){
-// 				callback(request.responseXML);
-// 			}else if(type === "application/json"){
-// 				console.log(request.responseText);
-// 				callback(JSON.parse(request.responseText));
+// 分享
 
-// 			}else{
-// 				// 支付串响应
-// 				callback(request.responseText);
-// 			}
-// 		}
-// 	};
-// 	request.send(null);
-// } 
+
+// 问答
+
+// 招聘
+
+
 $(function(){
 	$.ajax({
         type:"GET",   
@@ -50,28 +29,30 @@ $(function(){
             data = result.data[0];	
             var html = "";
 
-                 	html='<li>'+
-            					'<div class="header">'+
-            						'<span class="name">'+data.author.loginname+'</span>'+
-            						'<time>'+'10分钟前'+'</time>'+
-            						'<img src="">'+ 
-          						'</div>'+
+                //  	html='<li>'+
+            				// 	'<div class="header">'+
+            				// 		'<span class="name">'+data.author.loginname+'</span>'+
+            				// 		'<time>'+'10分钟前'+'</time>'+
+            				// 		'<img src="">'+ 
+          						// '</div>'+
        
-         						 '<div class="title">'+data.title+'</div>'+
-          					 '<div class="makedown">'+data.content+
-            						'<a class="#">显示全部</a>'+
-          						'</div>'+
+         						 // '<div class="title">'+data.title+'</div>'+
+          					 // '<div class="makedown">'+data.content+
+            				// 		'<a class="#">显示全部</a>'+
+          						// '</div>'+
 
-					           '<div class="footer">'+
-					             '<span>关注问题</span>'+
-					             '<span>评论</span>'+
-					             '<span>感谢</span>'+
-					             '<span>禁止装载</span>'+
-					            '</div>'+
-                    '</li>';
+					           // '<div class="footer">'+
+					           //   '<span>关注问题</span>'+
+					           //   '<span>评论</span>'+
+					           //   '<span>感谢</span>'+
+					           //   '<span>禁止装载</span>'+
+					           //  '</div>'+
+                //     '</li>';
 
-            for(var i=1; i<result.data.length;i++){
+            for(var i=0; i<result.data.length;i++){
             	var data = result.data[i];
+            	var content = data.content.replace(/<[^>]*>/g,"");
+            	
             	html+='<li>'+
             					'<div class="header">'+
             						'<span class="name">'+data.author.loginname+'</span>'+
@@ -80,8 +61,8 @@ $(function(){
           						'</div>'+
        
          						 '<div class="title">'+data.title+'</div>'+
-          					 '<div class="makedown">'+data.content+
-            						'<a class="#">显示全部</a>'+
+          					 '<div class="makedown">'+content.substring(0,150)+
+            						'<a class="showup">显示全部</a>'+
           						'</div>'+
 
 					           '<div class="footer">'+
@@ -103,6 +84,13 @@ $(function(){
 })
 
 
+$(function(){
+	var zip = new RegExp("")
+	var text = '<span>我的世界</span>'
+	var result = text.replace(/<[^>]*>/g," ");
+	console.log(result);
+})
+
 
 // window.onload = function(){
 
@@ -111,4 +99,4 @@ $(function(){
 // 	get(url,function(text){
 // 		console.log(text);
 // 	})
-// }
+// .// }/

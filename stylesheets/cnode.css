@@ -202,6 +202,8 @@ nav .news .setting{
 }
 
 .article li .name{
+	display: inline-block;
+	margin-right: 1rem;
 	font-size: 1.5rem;
 	line-height: 2.5rem;
 	color: black;
@@ -218,8 +220,17 @@ nav .news .setting{
 	line-height: 2rem;
 	color: black;
 
-	height: 5rem;
+	/*height: 5rem;*/
 	overflow: hidden;
+}
+
+.article .showup{
+	font-size: 1.4rem;
+	/*line-height: */
+	color: #249;
+
+	display: inline-block;
+	margin-left: 1rem;
 }
 
 .article h2{
@@ -234,8 +245,9 @@ nav .news .setting{
 	line-height: 1.7rem;
 	color: #259;
 	font-weight: 700;
-	padding-bottom: 0.7rem;
+	/*padding-bottom: 0.7rem;*/
 }
+
 
 .article .footer{
 	padding-top: 1rem;
