@@ -69,7 +69,7 @@ $(function(){
 					             '<span>关注问题</span>'+
 					             '<span>评论</span>'+
 					             '<span>感谢</span>'+
-					             '<span>禁止装载</span>'+
+					             '<span>禁止转载</span>'+
 					            '</div>'+
                     '</li>';
             }
