@@ -1,5 +1,6 @@
 /*cnode.css*/
 html{
+	font-size: 16px;
 	font-size: 62.5%;
 }
 
@@ -270,12 +271,15 @@ nav .news .setting{
 }
 
 .article .showup{
+	display: inline-block;
+	float: right;
 	font-size: 1.4rem;
 	/*line-height: */
 	color: #249;
 
 	display: inline-block;
-	margin-left: 1rem;
+	/*margin-left: 1rem;*/
+
 }
 
 .article h2{
