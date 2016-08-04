@@ -30,15 +30,20 @@ header .wrap{
 header a{
 	display: inline-block;
 	width: 7rem;
+	text-decoration: none;
 
 	height: 100%;
-	font-size: 3.4rem;
+	font-family: "微软雅黑";
+	font-size: 2.8rem;
 	line-height: 4.0rem;
 	color: white;
 	float: left;
 	/*text-indent: 1rem;*/
 	text-align: center;
 }
+
+
+
 
 header .wrap .cnodeLogo{
 	display: inline-block;
