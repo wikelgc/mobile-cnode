@@ -1,7 +1,8 @@
 /*cnode.css*/
 html{
-	font-size: 10px;
-	/*font-size: 62.5%;*/
+	font-size: 20px;
+	/*font-size: 75%;*/
+
 }
 
 .container{
@@ -17,7 +18,7 @@ header {
 
 	width: 100%;
 	background-color: #066BC0;
-	height: 4rem;
+	height: 2.4rem;
 
 	z-index: 1000;
 }
@@ -29,13 +30,13 @@ header .wrap{
 
 header a{
 	display: inline-block;
-	width: 7rem;
+	width: 4.2rem;
 	text-decoration: none;
 
 	height: 100%;
 	font-family: "微软雅黑";
-	font-size: 2.8rem;
-	line-height: 4.0rem;
+	font-size: 1.3rem;
+	line-height: 2.4rem;
 	color: white;
 	float: left;
 	/*text-indent: 1rem;*/
@@ -47,8 +48,8 @@ header a{
 
 header .wrap .cnodeLogo{
 	display: inline-block;
-	width: 7rem;
-	height: 2rem;
+	width: 4.2rem;
+	height: 1.2rem;
 
 	background-image: url(../images/logo.png);
 	background-repeat: no-repeat;
@@ -63,9 +64,9 @@ header .search{
 	flex: 1;
 
 	position: relative;
-	margin-left: 0.5rem;
+	margin-left: 0.3rem;
 
-	height: 4rem;
+	height: 2.4rem;
 
 	width: calc(100%-10px);
 	color: #04498F;
@@ -76,32 +77,32 @@ header .search input{
 	/*flex: 7rem;*/
 	box-sizing: content-box;
 	border:none;
-	border-radius: 0.2rem;
+	border-radius: 0.12rem;
 
 	width: 100%;
 	outline: none;
-	height: 2.6rem;
-	margin:0.7rem 0 0.7rem 0rem;
-	text-indent: 1rem; 
+	height: 1.5rem;
+	margin:0.42rem 0 0.42rem 0rem;
+	text-indent: 0.36rem; 
 
-	font-size: 1.4rem;
+	font-size: 0.7rem;
 } 
 
 header button{
 	display: inline-block;
 
 	box-sizing: content-box;
-	border-radius: 0.2rem;
+	border-radius: 0.12rem;
 	text-align: center;
 
-	margin: 0.7rem 1rem 0.7rem 1rem;
-	margin-right: 1rem;
+	margin: 0.42rem 0.6rem 0.42rem 0.6rem;
+	margin-right: 0.6rem;
 
-		width: 5rem;
-	height: 2.6rem;
+		width: 3rem;
+	height: 1.56rem;
 
-	font-size: 1.6rem;
-	line-height: 1.8rem;
+	font-size: 0.8rem;
+	line-height: 1.08rem;
 
 	background-color: #0c78c7;
 	border-bottom: none;
@@ -124,9 +125,9 @@ nav{
 	display: block;
 	position: relative;
 	width: 100%;
-	height: 7.4rem;
+	height: 4.44rem;
 
-	margin-top: 4rem;
+	margin-top: 2.4rem;
 	padding-top: 0;
 }
 
@@ -134,7 +135,7 @@ nav ul{
 	position: relative;
 	top:-0.1rem;
 	width: 100%;
-	height: 3.8rem;
+	height: 2.28rem;
 	display: flex;
 	background: #eee;
 	margin: 0;
@@ -146,28 +147,28 @@ nav li{
 	list-style: none;
 	flex:20%;
 	color: black;
-	font-size: 1.6rem;
+	font-size: 0.8rem;
 	text-align: center;
 	padding-top: 0;
 	margin-top: 0;
-	border-top:0.1rem solid #eee;
-	border-bottom: 0.1rem solid #eee;
+	border-top:0.06rem solid #eee;
+	border-bottom: 0.06rem solid #eee;
 }
 nav a{
 	display: inline-block;
 	width: 100%;
 	height: 100%;
-	font-size: 1.6rem;
-	line-height: 3.6rem;
+	font-size: 0.8rem;
+	line-height: 2.16rem;
 	
 }
 
 nav a:hover{
-	border-top:0.1rem solid #ddd;
-	border-bottom: 0.1rem solid #ddd;
+	border-top:0.06rem solid #ddd;
+	border-bottom: 0.06rem solid #ddd;
 
-	border-right: 0.1rem solid #ddd;
-	border-left: 0.1rem solid #ddd;
+	border-right: 0.06rem solid #ddd;
+	border-left: 0.06rem solid #ddd;
 }
 
 nav a:hover:last-child{
@@ -176,9 +177,9 @@ nav a:hover:last-child{
 
 nav .wrap{
 	position: relative;
-	width: calc(100%-2rem);
+	width: calc(100%-1.2rem);
 	padding: 0;
-	margin: 0 1rem;
+	margin: 0 0.6rem;
 	/*padding: 0 1rem;*/
 }
 
@@ -186,23 +187,23 @@ nav .news{
 	position: relative;
 	width: 100%;
 	margin: 0 auto;
-	height: 3.6rem;
-	border-bottom: 0.1rem solid #ccc;
+	height: 2.16rem;
+	border-bottom: 0.06rem solid #ccc;
 }
 
 nav .news .newsImage{
 	display: inline-block;
 	position: relative;
-	top:0.3rem;
-	margin-right: 0.3rem;
+	top:0.18rem;
+	margin-right: 0.18rem;
 
 
 	background-image:url(../images/news.png); 
 	background-repeat: no-repeat;
 	background-position: center;
 
-	width: 1.6rem;
-	height: 1.6rem;
+	width: 0.96rem;
+	height: 0.96rem;
 	/*margin-top: 0.8rem;*/
 	-webkit-background-size: cover;
 	background-size: cover;
@@ -212,8 +213,8 @@ nav .news .newsImage{
 nav .news .newstates{
 	display: inline-block;
 	/*text-indent: 0.5rem;*/
-	font-size: 1.6rem;
-	line-height: 3.6rem;
+	font-size: 0.8rem;
+	line-height: 2.16rem;
 	font-weight: 600;
 	color: black;
 }
@@ -221,9 +222,9 @@ nav .news .newstates{
 nav .news .setting{
 	display: inline-block;
 	float: right;
-	text-indent: -3rem;
-	font-size: 1.4rem;
-	line-height: 3.6rem;
+	text-indent: -1.8rem;
+	font-size: 0.7rem;
+	line-height: 2.16rem;
 	color: #999;
 }
 
@@ -234,19 +235,18 @@ nav .news .setting{
 }
 
 .article ul{
-	width: calc(100%-2rem);
-	padding: 0;
-	padding: 0 1rem 0 1rem;
-	margin: 0;
+	width: calc(100% - 1.2rem);
+	padding: 0 0.06rem 0 0.06rem;
+	margin: 0 auto;
 }
 
 .article>ul> li{
 
 	list-style: none;
 	text-decoration: none;
-	padding: 0 0 0.5rem 0;
+	padding: 0 0 0.3rem 0;
 	/*margin-top: 1rem;*/
-	margin: 0.5rem 0 0 0;
+	margin: 0.3rem 0 0 0;
 	width: 100%;
 	border-bottom:1px solid #ccc;
 }
@@ -254,15 +254,15 @@ nav .news .setting{
 .article li .header{
 	position: relative;
 	width: 100%;
-	height: 2.5rem;
+	height: 1.5rem;
 }
 
 .article .header img{
 
 	display: inline-block;
-	width: 2.0rem;
-	height: 2.0rem;
-	margin: 0.25rem 0;
+	width: 1.2rem;
+	height: 1.2rem;
+	margin: 0.15rem 0;
 	/*border: 1px solid red;*/
 
 	float: right;
@@ -270,22 +270,22 @@ nav .news .setting{
 
 .article li .name{
 	display: inline-block;
-	margin-right: 1rem;
-	font-size: 1.6rem;
-	line-height: 2.5rem;
+	margin-right: 0.6rem;
+	font-size: 0.8rem;
+	line-height: 1.5rem;
 	color: #222;
 	font-family: "微软雅黑";
 }
 
 .article li time{
-	font-size: 1.4rem;
-	line-height: 2.5rem;
+	font-size: 0.7rem;
+	line-height: 1.5rem;
 	color: #999;
 } 
 
 .article .makedown{
-	font-size: 1.4rem;
-	line-height: 2.0rem;
+	font-size: 0.7rem;
+	line-height: 1.2rem;
 	color: black;
 
 	/*height: 5rem;*/
@@ -311,7 +311,7 @@ nav .news .setting{
 .article .showup{
 	display: inline-block;
 	float: right;
-	font-size: 1.4rem;
+	font-size: 0.7rem;
 	/*line-height: */
 	color: #249;
 
@@ -323,13 +323,13 @@ nav .news .setting{
 .article h2{
 	padding:  0 ;
 	margin: 0;
-	font-size: 1.6rem;
+	font-size: 0.8rem;
 	/*line-height: 2.7rem;*/
 }
 
 .article .title{
-	font-size: 1.6rem;
-	line-height: 1.7rem;
+	font-size: 0.8rem;
+	line-height: 1.0rem;
 	color: #259;
 	font-weight: 700;
 }
@@ -338,14 +338,14 @@ nav .news .setting{
 .article .footer{
 /*	padding-top: 1rem;
 	padding-bottom: 1rem;	*/
-	font-size: 1.4rem;
-	line-height: 2.5rem;
+	font-size: 0.7rem;
+	line-height: 1.5rem;
 	color: #999;
 }
 
 .article .footer span{
 	display: inline-block;
-	margin-right: 1rem;
+	margin-right: 0.6rem;
 }
 
 .article .more{
@@ -354,12 +354,12 @@ nav .news .setting{
 	background-color: #e6e6e8;
 	border:1px solid #cccccc;
 	/*border:1px solid #eee;*/
-	width: calc(100% - 2rem);
+	width: calc(100% - 1.2rem);
 	margin: 2rem auto;
 	/*border:none;*/
-	height: 2.4rem;
-	font-size: 1.4rem;
-	line-height: 2.4rem;
-	border-radius: .3rem;
+	height: 1.5rem;
+	font-size: 0.7rem;
+	line-height: 105rem;
+	border-radius: .18rem;
 	text-align: center;
 }
