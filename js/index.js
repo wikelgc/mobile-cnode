@@ -22,6 +22,7 @@ for(var i=len;i>0;i--){
 				}else{
 					rounter = "";
 				}
+				console.log("rounter:"+rounter);
 				rounterChoise(rounter);
 				// ajax(rounter);
 		}
@@ -57,7 +58,7 @@ function ajax(rounter,state){
         data:{
         	tab:rounter,
         	page: 1,
-        	limit:20
+        	limit:15
         },
         url: "https://cnodejs.org/api/v1/topics",
         dataType:"json",
@@ -138,17 +139,17 @@ function moreclick(rounter){
 	var click = 2;
 	var more = document.getElementsByClassName("more")[0];
 	more.onclick = function(){
-		addAjax("",click++);
+		addAjax(rounter,click++);
 	}
 }
 function addAjax(rounter,page){
-	console.log(page);
+	console.log("rounter:"+rounter+","+"page"+page);
 	$.ajax({
         type:"GET", 
         data:{
         	page:page,
         	tab:rounter,
-        	limit:20
+        	limit:15
         },
         url: "https://cnodejs.org/api/v1/topics",
         dataType:"json",
