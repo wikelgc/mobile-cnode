@@ -40,6 +40,20 @@ header a{
 	text-align: center;
 }
 
+header .wrap .cnodeLogo{
+	display: inline-block;
+	width: 7rem;
+	height: 2rem;
+
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+
+	z-index: 10000;
+	
+}
+
 header .search{
 	flex: 1;
 
@@ -171,9 +185,28 @@ nav .news{
 	border-bottom: 0.1rem solid #ccc;
 }
 
+nav .news .newsImage{
+	display: inline-block;
+	position: relative;
+	top:0.3rem;
+	margin-right: 0.3rem;
+
+
+	background-image:url(../images/news.png); 
+	background-repeat: no-repeat;
+	background-position: center;
+
+	width: 1.6rem;
+	height: 1.6rem;
+	/*margin-top: 0.8rem;*/
+	-webkit-background-size: cover;
+	background-size: cover;
+	z-index: 1000;
+}
+
 nav .news .newstates{
 	display: inline-block;
-	text-indent: 2rem;
+	/*text-indent: 0.5rem;*/
 	font-size: 1.6rem;
 	line-height: 3.6rem;
 	font-weight: 600;
@@ -202,7 +235,7 @@ nav .news .setting{
 	margin: 0;
 }
 
-.article li{
+.article>ul> li{
 
 	list-style: none;
 	text-decoration: none;

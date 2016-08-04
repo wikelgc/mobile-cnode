@@ -1,35 +1,34 @@
+function event(){
 // 导航页
-var nav = document.getElementsByTagName('nav')[0].getElementsByTagName("li");
+	var nav = document.getElementsByTagName('nav')[0].getElementsByTagName("li");
+	var len = nav.length-1;
 
-var len = nav.length-1;
-
-for(var i=len;i>0;i--){
-	(function(i){
-		console.log(i);
-		return nav[i].onclick = function(){
-				var rounter = ""; 
-				console.log(i);
-				if(i == 0){
-					rounter = ""
-				}else if(i == 1){
-					rounter = "good";
-				}else if(i == 2){
-					rounter = "share";
-				}else if(i == 3){
-					rounter = "ask";
-				}else if(i == 4){
-					rounter = "job";
-				}else{
-					rounter = "";
-				}
-				console.log("rounter:"+rounter);
-				rounterChoise(rounter);
-				// ajax(rounter);
-		}
-	})(i);
+	for(var i=len;i>=0;i--){
+		(function(i){
+			console.log(i);
+			return nav[i].onclick = function(){
+					var rounter = ""; 
+					console.log(i);
+					if(i == 0){
+						rounter = "index";
+					}else if(i == 1){
+						rounter = "good";
+					}else if(i == 2){
+						rounter = "share";
+					}else if(i == 3){
+						rounter = "ask";
+					}else if(i == 4){
+						rounter = "job";
+					}else{
+						rounter = "index";
+					}
+					console.log("rounter:"+rounter);
+					rounterChoise(rounter);
+					// ajax(rounter);
+			}
+		})(i);
+	}
 }
-
-
 // 路由
 
 function rounterChoise(rounter){
@@ -49,7 +48,8 @@ $(function(){
 
 
 function ajax(rounter,state){
-	if(rounter == undefined){
+	console.log(rounter)
+	if(rounter == "index"){
 		rounter = "";
 	}
 	console.log(rounter);
@@ -125,6 +125,8 @@ function ajax(rounter,state){
 								}
 							})(j)
 
+							moreclick("index");
+
 						// 点击更多
 }
         },
@@ -142,7 +144,13 @@ function moreclick(rounter){
 		addAjax(rounter,click++);
 	}
 }
+
+
 function addAjax(rounter,page){
+
+	if(rounter == "index")
+		rounter = "";
+
 	console.log("rounter:"+rounter+","+"page"+page);
 	$.ajax({
         type:"GET", 
@@ -190,4 +198,16 @@ function addAjax(rounter,page){
             $(".article").find("ul").append(html);
         }
       })
+}
+
+$(function(){
+	// 初始化
+	init();
+	// 事件监听
+	event();
+});
+
+
+function init(){
+	ajax();
 }
