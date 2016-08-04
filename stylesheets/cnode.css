@@ -353,13 +353,13 @@ nav .news .setting{
 	display: block;
 	background-color: #e6e6e8;
 	border:1px solid #cccccc;
-	/*border:1px solid #eee;*/
+	color: black;
 	width: calc(100% - 1.2rem);
 	margin: 2rem auto;
-	/*border:none;*/
 	height: 1.5rem;
 	font-size: 0.7rem;
 	line-height: 105rem;
 	border-radius: .18rem;
 	text-align: center;
+	z-index: 1000;
 }
