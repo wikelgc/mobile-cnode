@@ -170,14 +170,17 @@ function show(result,datas){
 
 
 // 系统初始化
-function init(){	
+function init(data){	
 	// 清空列表数据
 	$(".article").find("ul").html("");
 	// 获取首页的数据
 	ajax(data);
 
 	// 绑定"更多"监听事件
+	console.log(data);
 	moreclick(data);
+
+	
 }
 
 // main()
