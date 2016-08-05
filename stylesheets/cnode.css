@@ -330,6 +330,7 @@ nav .news .setting{
 .article .title{
 	font-size: 0.8rem;
 	line-height: 1.0rem;
+	padding-bottom: 0.2rem;
 	color: #259;
 	font-weight: 700;
 }
