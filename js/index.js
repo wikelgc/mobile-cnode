@@ -168,6 +168,20 @@ function show(result,datas){
   }
 }
 
+function commentclick(id){
+	$.ajax({
+        type:"GET",
+        url: "https://cnodejs.org/api/v1/topic/"+id,
+        dataType:"json",
+        success:function (result) {
+       		// show(result,data);
+       		console.log(result);
+        },
+        error:function (result, status) {
+           console.log(result);
+        }
+	});
+}
 
 // 系统初始化
 function init(data){	
@@ -180,7 +194,8 @@ function init(data){
 	console.log(data);
 	moreclick(data);
 
-	
+	// var id = "5433d5e4e737cbe96dcef312";
+	// commentclick(id);
 }
 
 // main()

@@ -228,19 +228,33 @@ nav .news .setting{
 	color: #999;
 }
 
+nav .setting i{
+	display: inline-block;
+
+	position: relative;
+	top: 0.2rem;
+	margin-right: 0.05rem;
+	width: 1rem;
+	height: 1rem;
+	background-image: url(../images/setting.png);
+	background-position: center;
+	background-size: cover;
+	
+}
+
 
 .article{
 	width: 100%;
 	position: relative;
 }
 
-.article ul{
+.article>ul{
 	width: calc(100% - 1.2rem);
 	padding: 0 0.06rem 0 0.06rem;
 	margin: 0 auto;
 }
 
-.article>ul> li{
+.article>ul>li{
 
 	list-style: none;
 	text-decoration: none;
@@ -248,10 +262,11 @@ nav .news .setting{
 	/*margin-top: 1rem;*/
 	margin: 0.3rem 0 0 0;
 	width: 100%;
+	/*overflow: hidden;*/
 	border-bottom:1px solid #ccc;
 }
 
-.article li .header{
+.article>ul>li .header{
 	position: relative;
 	width: 100%;
 	height: 1.5rem;
@@ -268,7 +283,7 @@ nav .news .setting{
 	float: right;
 }
 
-.article li .name{
+.article>ul>li .name{
 	display: inline-block;
 	margin-right: 0.6rem;
 	font-size: 0.8rem;
@@ -339,27 +354,92 @@ nav .news .setting{
 .article .footer{
 /*	padding-top: 1rem;
 	padding-bottom: 1rem;	*/
+	position: relative;
 	font-size: 0.7rem;
 	line-height: 1.5rem;
 	color: #999;
 }
 
 .article .footer span{
+	/*position: relative;*/
 	display: inline-block;
 	margin-right: 0.6rem;
+}
+
+.article .comment{
+	overflow: hidden;
+	display: block;
+	position: relative;
+	border:1px solid #ddd;
+	/*margin: 0 0.3rem;*/
+	/*padding: 0 0.3rem;*/
+	left: 0;
+	width: 100%;
+	border-radius: 0.2rem;
+	line-height: 1.25rem;
+	font-size: 0.75rem;
+	margin-bottom:3rem;
+}
+
+
+.article .comment li{
+	margin: 0 0.6rem;
+	padding: 0.65rem 0 ;
+	border-bottom: 0.05rem solid #eee;
+}
+
+.article .comment li:last-child{
+	border-bottom: none;
+}
+
+.article .comment .comment-name{
+	color: #249;
+}
+
+.article .comment-input{
+	height: 3.2rem;
+	width: 100%;
+	background-color: rgb(251,251,251);
+	border-color: black;
+	margin: 0 auto;
+	text-align: center;
+	border-top: 0.05rem solid #eee;
+	/*border-bottom: 0.05rem solid #eee;*/
+}
+
+.article .comment-input input{
+	display: inline-block;
+	margin-top:0.75rem;
+	width: calc(100% - 1.2rem);
+	height: 1.5rem;
+	font-size: 0.75rem;
+	line-height:0.8rem; 
+	border-radius: 0.2rem;
+	box-shadow: none;
+	border:0.05rem solid #eee;
+}
+
+.article .comment .comment-content{
+	color: #222;
+}
+
+.article .comment .comment-footer{
+	color: #999;
 }
 
 .article .more{
 
 	display: block;
 	background-color: #e6e6e8;
-	border:1px solid #cccccc;
+	background: linear-gradient(to bottom,#f8f8f8,#e6e6e6);
+	border:1px solid #bbb;
+	box-shadow: 0 1px  0 #fff inset,0 1px 0 rgba(0,0,0,0.1);
 	color: black;
 	width: calc(100% - 1.2rem);
 	margin: 2rem auto;
 	height: 1.5rem;
 	font-size: 0.7rem;
-	line-height: 105rem;
+	line-height: 1.5rem;
 	border-radius: .18rem;
 	text-align: center;
 	z-index: 1000;
