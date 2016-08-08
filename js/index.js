@@ -105,6 +105,7 @@ function show(result,datas){
 
   var contentMin = "";
   var contentMax = "";
+  console.log(result.data);
 
   for(var i=0; i<result.data.length;i++){
   	data = result.data[i];
@@ -127,10 +128,11 @@ function show(result,datas){
 
            '<div class="footer">'+
              '<span>关注问题</span>'+
-             '<span>评论</span>'+
+             '<span class ="comment">评论</span>'+
              '<span>感谢</span>'+
              '<span>禁止转载</span>'+
             '</div>'+
+            '<div class="comment-box"><ul></ul><div class="comment-input"><input type="" name="" placeholder="写下你的评论"></div></div>'+
           '</li>';
   }
 
@@ -145,42 +147,92 @@ function show(result,datas){
 		(function(j){
 
 			var data = result.data[j];
+			var id = data.id;
   		var contentMin = data.content.replace(/<[^>]*>/g,"");
   		var contentMax= data.content.replace(/src=\"\/\//g,"src=\"https:\/\/");
-  		// console.log(result.da)
+  		
+  		console.log(data.id);
+
   		console.log(datas.page+"ssss"+datas.limit)
-			var showup = li[j+(datas.page-1)*datas.limit].getElementsByClassName("showup"); 
-			return showup[0].onclick = function(){
-				// contentMin
-				console.log(j);
-				console.log(contentMin);
-				if(showup[0].innerText == "收起"){
-					// li[j].getElementsByClassName("showSpan")[0].style.display = "none";
-					li[j+(datas.page-1)*datas.limit].getElementsByClassName("showDiv")[0].innerHTML = contentMin.substring(0,150);	
-					showup[0].innerText = "显示全部";	
+			var showup  = li[j+(datas.page-1)*datas.limit].getElementsByClassName("showup");
+			var comment = li[j+(datas.page-1)*datas.limit].getElementsByClassName("comment");
+			var commentBox = li[j+(datas.page-1)*datas.limit].getElementsByClassName("comment-box")[0]; 
+			
+			// comment[0].style.display = "block";
+			comment[0].onclick = function(){
+				if(commentBox.style.display == "block"){
+					commentBox.style.display = "none";
+
 				}else{
-					// li[j].getElementsByClassName("showSpan")[0].style.display = "block";
+					commentBox.style.display = "block";
+					var ht = "";
+					commentEvent(id,commentBox);
+					console.log(ht);
+					// commentBox.getElementsByTagName("ul")[0].innerHTML = ht;
+					
+				}
+			};
+
+			return showup[0].onclick = function(){
+				console.log(id);
+				if(showup[0].innerText == "收起"){
+					li[j+(datas.page-1)*datas.limit].getElementsByClassName("showDiv")[0].innerHTML = contentMin.substring(0,150);	
+					showup[0].innerText = "显示全部";
+
+				}else{
 					li[j+(datas.page-1)*datas.limit].getElementsByClassName("showDiv")[0].innerHTML = contentMax;	
-					showup[0].innerText = "收起";	
+					showup[0].innerText = "收起";
+					// li[j+(datas.page-1)*datas.limit].getElementsByClassName("article-li").append(html);
+				
+					// li[j+(datas.page-1)*datas.limit].getElementsByClassName("comment")[0].append('<div>ssdfd</div>');
+						
 				}	
-			}
+			};
+
+			
 		})(j)
   }
+
+
 }
 
-function commentclick(id){
+function commentEvent(id,commentBox){
+	var renderHTML = "";
+	console.log("id:"+id);
 	$.ajax({
         type:"GET",
         url: "https://cnodejs.org/api/v1/topic/"+id,
         dataType:"json",
         success:function (result) {
-       		// show(result,data);
        		console.log(result);
+       		renderHTML = commentRender(result);
+       		commentBox.getElementsByTagName("ul")[0].innerHTML=renderHTML;
         },
         error:function (result, status) {
            console.log(result);
         }
 	});
+
+	// console.log("renderHTML"+renderHTML);
+	// return "renderHTML";
+}
+
+function commentRender(result){
+	var replies = result.data.replies;
+	var html = "";
+	for(var i=0;i<replies.length;i++){
+			 html += 	'<li>'+
+									'<span class="comment-name">'+replies[i].author.loginname+'</span>'+
+                  '<div class="comment-content">'+replies[i].content+'</div>'+
+                  '<div class="comment-footer">'+
+                    '<span class="comment-time">20天前</span>'+
+                    '<span class="">回复</span>'+
+                    '<span class="">赞</span>'+
+                    '<span class="">举报</span>'+
+                  '</div>'+
+								'</li>';
+	}	
+ 	return html;
 }
 
 // 系统初始化

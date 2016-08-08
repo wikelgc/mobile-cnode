@@ -366,9 +366,10 @@ nav .setting i{
 	margin-right: 0.6rem;
 }
 
-.article .comment{
+.article .comment-box{
+	display: none;
 	overflow: hidden;
-	display: block;
+	
 	position: relative;
 	border:1px solid #ddd;
 	/*margin: 0 0.3rem;*/
@@ -382,17 +383,17 @@ nav .setting i{
 }
 
 
-.article .comment li{
+.article .comment-box li{
 	margin: 0 0.6rem;
 	padding: 0.65rem 0 ;
 	border-bottom: 0.05rem solid #eee;
 }
 
-.article .comment li:last-child{
+.article .comment-box li:last-child{
 	border-bottom: none;
 }
 
-.article .comment .comment-name{
+.article .commentbox .comment-name{
 	color: #249;
 }
 
@@ -419,11 +420,11 @@ nav .setting i{
 	border:0.05rem solid #eee;
 }
 
-.article .comment .comment-content{
+.article .comment-box .comment-content{
 	color: #222;
 }
 
-.article .comment .comment-footer{
+.article .comment-box .comment-footer{
 	color: #999;
 }
 
