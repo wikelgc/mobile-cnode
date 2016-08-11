@@ -1,5 +1,5 @@
 // 全局变量
-var lastRouter = "ss";
+var lastRouter = "index";
 
 
 function event(){
@@ -48,27 +48,22 @@ function navEvent(){
 
 
 function ajax(data){
+	//如果rounter是index,则转成"";
 	if(data.rounter == "index"){
 		data.rounter = "";
-		// data.page++;
 	}
 
-	//判断当前页面与上一次的页面是否有区别
-	// 如果有，则设置page页面为1
+	//判断当前页面与上一次的页面是否相同
+	//如果是，则使page页面加1。如果不同,则重置page
   if(lastRouter != data.rounter ){
-  		data.page = 1;	
+  		data.page = 1;
+  		lastRouter = data.rounter;	
   		$(".article").find("ul").html("");
-  		lastRouter = data.rounter;
-  		
   }
   else{
-
-  // 否则让page页面自增
   	data.page++;
-  	console.log(data.page)
   }
 
-	console.log(data.page);
 	$.ajax({
         type:"GET",
         data:{
@@ -96,19 +91,16 @@ function moreclick(data){
 }
 
 function show(result,datas){
-
-	console.log("datas.rounter:"+datas.rounter+",datas.page:"+datas.page);
-
 	//定义一个对象获取数据 
   var data = {};
   var html = "";
 
   var contentMin = "";
   var contentMax = "";
-  console.log(result.data);
 
   for(var i=0; i<result.data.length;i++){
   	data = result.data[i];
+  	console.log(data);
 
   	// 去掉html中标签
   	contentMin = data.content.replace(/<[^>]*>/g,"");
@@ -116,7 +108,7 @@ function show(result,datas){
   	html+='<li class="article-li">'+
   					'<div class="header">'+
   						'<span class="name">'+data.author.loginname+'</span>'+
-  						'<time>'+'10分钟前'+'</time>'+
+  						'<time>'+getTime(data.last_reply_at)+'</time>'+
   						'<img src="'+data.author.avatar_url+'">'+ 
 						'</div>'+
 
@@ -136,64 +128,75 @@ function show(result,datas){
           '</li>';
   }
 
-	//在ul的尾部追加html 
-  $(".article").find("ul").append(html);
+  html = "<li class='page'><ul>"+html+"</li></ul>";
 
+	//在ul的尾部追加html 
+  $(".article>ul").append(html);
   // 显示全部，
-  var article = document.getElementsByClassName("article");
-	var li = article[0].getElementsByClassName("article-li");
+
+
+	//第几个页面
+	console.log("datas"+datas.page);
+	var page = document.getElementsByClassName("page")[datas.page-1];
 
 	for(var j=0;j<datas.limit;j++){
 		(function(j){
 
 			var data = result.data[j];
+
 			var id = data.id;
   		var contentMin = data.content.replace(/<[^>]*>/g,"");
   		var contentMax= data.content.replace(/src=\"\/\//g,"src=\"https:\/\/");
-  		
-  		console.log(data.id);
-
-  		console.log(datas.page+"ssss"+datas.limit)
-			var showup  = li[j+(datas.page-1)*datas.limit].getElementsByClassName("showup");
-			var comment = li[j+(datas.page-1)*datas.limit].getElementsByClassName("comment");
-			var commentBox = li[j+(datas.page-1)*datas.limit].getElementsByClassName("comment-box")[0]; 
+  		console.log("j.0"+j);
 			
-			// comment[0].style.display = "block";
-			comment[0].onclick = function(){
+			var model = page.getElementsByClassName("article-li")[j];
+			// console.log(model.length);
+
+			var showup = model.getElementsByClassName("showup")[0];
+			var comment = model.getElementsByClassName("comment")[0];
+			var commentBox = model.getElementsByClassName("comment-box")[0];
+	
+			comment.onclick = function(){
 				if(commentBox.style.display == "block"){
 					commentBox.style.display = "none";
-
 				}else{
 					commentBox.style.display = "block";
-					var ht = "";
 					commentEvent(id,commentBox);
-					console.log(ht);
-					// commentBox.getElementsByTagName("ul")[0].innerHTML = ht;
-					
 				}
 			};
 
-			return showup[0].onclick = function(){
+			return showup.onclick = function(){
 				console.log(id);
-				if(showup[0].innerText == "收起"){
-					li[j+(datas.page-1)*datas.limit].getElementsByClassName("showDiv")[0].innerHTML = contentMin.substring(0,150);	
-					showup[0].innerText = "显示全部";
-
+				if(showup.innerText == "收起"){
+					model.getElementsByClassName("showDiv")[0].innerHTML = contentMin.substring(0,150);	
+					showup.innerText = "显示全部";
 				}else{
-					li[j+(datas.page-1)*datas.limit].getElementsByClassName("showDiv")[0].innerHTML = contentMax;	
-					showup[0].innerText = "收起";
-					// li[j+(datas.page-1)*datas.limit].getElementsByClassName("article-li").append(html);
-				
-					// li[j+(datas.page-1)*datas.limit].getElementsByClassName("comment")[0].append('<div>ssdfd</div>');
-						
+					model.getElementsByClassName("showDiv")[0].innerHTML = contentMax;	
+					showup.innerText = "收起";
 				}	
-			};
-
-			
+			};		
 		})(j)
   }
+}
 
 
+function getTime(Time){
+	var startTime = new Date(Time);
+
+	var endTime=new Date();  //开始时间
+	  //结束时间
+	var time=endTime.getTime()-startTime.getTime()  //时间差的毫秒数
+
+	if(Math.floor(time/(24*3600*1000)) > 0){
+		return Math.floor(time/(24*3600*1000))+"天前";
+	}else if(Math.floor(time/(3600*1000)) > 0){
+		return Math.floor(time/(3600*1000))+"小时前";
+	}else if( Math.floor(time/(60*1000)) >0){
+		return Math.floor(time/(60*1000))+"分钟前"
+	}else if(Math.floor(time/(1000))>0){
+		return Math.floor(time/(1000))+"秒前"
+	}
+	 
 }
 
 function commentEvent(id,commentBox){
@@ -212,20 +215,18 @@ function commentEvent(id,commentBox){
            console.log(result);
         }
 	});
-
-	// console.log("renderHTML"+renderHTML);
-	// return "renderHTML";
 }
 
 function commentRender(result){
 	var replies = result.data.replies;
+	console.log(replies);
 	var html = "";
 	for(var i=0;i<replies.length;i++){
 			 html += 	'<li>'+
 									'<span class="comment-name">'+replies[i].author.loginname+'</span>'+
                   '<div class="comment-content">'+replies[i].content+'</div>'+
                   '<div class="comment-footer">'+
-                    '<span class="comment-time">20天前</span>'+
+                    '<span class="comment-time">'+getTime(replies[i].create_at)+'</span>'+
                     '<span class="">回复</span>'+
                     '<span class="">赞</span>'+
                     '<span class="">举报</span>'+
@@ -237,18 +238,17 @@ function commentRender(result){
 
 // 系统初始化
 function init(data){	
-	// 清空列表数据
-	$(".article").find("ul").html("");
 	// 获取首页的数据
 	ajax(data);
 
-	// 绑定"更多"监听事件
-	console.log(data);
-	moreclick(data);
+	// 绑定事件
 
-	// var id = "5433d5e4e737cbe96dcef312";
-	// commentclick(id);
+
+	// 绑定"更多"监听事件
+	moreclick(data);
 }
+
+
 
 // main()
 $(function(){
@@ -258,7 +258,7 @@ $(function(){
   	page: 1,
   	limit:15
   };
-	// 初始化
+	// 初始化 -- 对首页的初始化
 	init(data);
 	// 事件监听
 	event();
