@@ -196,7 +196,6 @@ function getTime(Time){
 	}else if(Math.floor(time/(1000))>0){
 		return Math.floor(time/(1000))+"秒前"
 	}
-	 
 }
 
 function commentEvent(id,commentBox){
