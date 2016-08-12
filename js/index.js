@@ -119,8 +119,9 @@ function show(result,datas){
 						'</div>'+
 
            '<div class="footer">'+
+           	 '<span class="visit-count">'+data.visit_count+'</span>'+
              '<span>关注问题</span>'+
-             '<span class ="comment">评论</span>'+
+             '<span class ="comment">'+data.reply_count+'条评论</span>'+
              '<span>感谢</span>'+
              '<span>禁止转载</span>'+
             '</div>'+
@@ -186,8 +187,9 @@ function getTime(Time){
 	var endTime=new Date();  //开始时间
 	  //结束时间
 	var time=endTime.getTime()-startTime.getTime()  //时间差的毫秒数
-
-	if(Math.floor(time/(24*3600*1000)) > 0){
+	if(Math.floor(time/(365*24*3600*1000)) > 0){
+		return Math.floor(time/(365*24*3600*1000))+"年前";
+	}else if(Math.floor(time/(24*3600*1000)) > 0){
 		return Math.floor(time/(24*3600*1000))+"天前";
 	}else if(Math.floor(time/(3600*1000)) > 0){
 		return Math.floor(time/(3600*1000))+"小时前";
@@ -229,6 +231,7 @@ function commentRender(result){
                     '<span class="">回复</span>'+
                     '<span class="">赞</span>'+
                     '<span class="">举报</span>'+
+                    '<span class="">'+replies[i].ups.length+'赞</span>'+
                   '</div>'+
 								'</li>';
 	}	

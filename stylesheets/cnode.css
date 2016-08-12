@@ -254,7 +254,7 @@ nav .setting i{
 	margin: 0 auto;
 }
 
-.article>ul>li{
+.article .page>ul>li{
 
 	list-style: none;
 	text-decoration: none;
@@ -264,6 +264,11 @@ nav .setting i{
 	width: 100%;
 	/*overflow: hidden;*/
 	border-bottom:1px solid #ccc;
+
+}
+
+.page .article-li{
+	border-bottom: 1px solid #eee;
 }
 
 .article>ul>li .header{
@@ -283,13 +288,14 @@ nav .setting i{
 	float: right;
 }
 
-.article>ul>li .name{
+.article ul>li .name{
 	display: inline-block;
 	margin-right: 0.6rem;
 	font-size: 0.8rem;
 	line-height: 1.5rem;
 	color: #222;
-	font-family: "微软雅黑";
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif,'Helvetica Neue',Helvetica,Arial,sans-serifbody
+,"微软雅黑";
 }
 
 .article li time{
@@ -360,6 +366,17 @@ nav .setting i{
 	color: #999;
 }
 
+.article .footer .visit-count{
+	display: inline-block;
+	padding: 0.2rem;
+	padding-top: 0.1rem;
+	padding-bottom: 0.1rem;
+	line-height: 0.9rem;
+	background-color:#eff6fa;
+	 
+	color:#698ebf;;
+}
+
 .article .footer span{
 	/*position: relative;*/
 	display: inline-block;
@@ -384,6 +401,7 @@ nav .setting i{
 
 
 .article .comment-box li{
+	overflow: hidden;
 	margin: 0 0.6rem;
 	padding: 0.65rem 0 ;
 	border-bottom: 0.05rem solid #eee;
@@ -391,10 +409,16 @@ nav .setting i{
 
 .article .comment-box li:last-child{
 	border-bottom: none;
+
+
 }
 
-.article .commentbox .comment-name{
-	color: #249;
+.article .comment-box .comment-name{
+	color: rgb(34,85,153);
+	cursor: auto;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 0.75rem;
+	line-height: 1.275rem;
 }
 
 .article .comment-input{
@@ -426,6 +450,16 @@ nav .setting i{
 
 .article .comment-box .comment-footer{
 	color: #999;
+}
+
+.article .comment-footer span{
+	display: inline-block;
+	margin-right: 0.5rem;
+}
+
+.article .comment-footer span:last-child{
+	margin-right: 0;
+	float: right;
 }
 
 .article .more{
